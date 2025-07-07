@@ -1,0 +1,378 @@
+venv(base) adamyasingh@Adamyas-MacBook-Pro rebooted-ai % 
+python agent.py 
+=== KNOWLEDGE GAP ANALYSIS ===
+Starting Point: No prior programming experience required. Students should have basic computer literacy and be comfortable using a text editor.
+Finish Line: Students will be able to create a simple website using HTML, CSS, and basic JavaScript, understand core web development concepts, deploy their website, and be prepared to learn more advanced web development topics.
+
+Knowledge/Skills Needed:
+1. HTML syntax and commonly used tags
+2. Structuring content with HTML elements
+3. CSS syntax and selectors
+4. Styling web page appearance with CSS
+5. Page layout techniques with CSS
+6. Basic JavaScript syntax and data types
+7. Using JavaScript to manipulate web page content
+8. Responding to user interactions with JavaScript
+9. Client-server architecture of the web
+10. Role of browsers and HTTP
+11. Using a code editor to write and edit code
+12. Using developer tools to debug and inspect pages
+13. Deploying websites to a hosting service
+
+Total skills identified: 13
+Skills for processing in Step 2:
+  - HTML syntax and commonly used tags
+  - Structuring content with HTML elements
+  - CSS syntax and selectors
+  - Styling web page appearance with CSS
+  - Page layout techniques with CSS
+  - Basic JavaScript syntax and data types
+  - Using JavaScript to manipulate web page content
+  - Responding to user interactions with JavaScript
+  - Client-server architecture of the web
+  - Role of browsers and HTTP
+  - Using a code editor to write and edit code
+  - Using developer tools to debug and inspect pages
+  - Deploying websites to a hosting service
+
+=== MODULE GROUPING ===
+Module 1: Web Fundamentals
+  - Client-server architecture of the web
+  - Role of browsers and HTTP
+  - Using a code editor to write and edit code
+  - Using developer tools to debug and inspect pages
+Module 2: HTML
+  - HTML syntax and commonly used tags
+  - Structuring content with HTML elements
+Module 3: CSS
+  - CSS syntax and selectors
+  - Styling web page appearance with CSS
+  - Page layout techniques with CSS
+Module 4: JavaScript
+  - Basic JavaScript syntax and data types
+  - Using JavaScript to manipulate web page content
+  - Responding to user interactions with JavaScript
+Module 5: Capstone
+  - Deploying websites to a hosting service
+
+
+=== COURSE CONTENT GENERATION ===
+
+Module 1: Web Fundamentals
+Content blocks generated: 21
+  Content Block 1:
+    Type: Text
+    Title: Introduction to Client-Server Architecture
+    Body: The web is built on a client-server architecture. This means that interactions on the web involve tw...
+  Content Block 2:
+    Type: Question
+    Title: Identifying Clients and Servers
+    Question: When you use a mobile app to browse Instagram, what is the client and what is the server in this interaction?
+    Options: ["Your phone is the client, Instagram's web servers are the server", 'Instagram is the client, your phone is the server', "Both your phone and Instagram's servers are clients", "Both your phone and Instagram's servers are servers"]
+    Correct Answer: Your phone is the client, Instagram's web servers are the server
+  Content Block 3:
+    Type: Question
+    Title: HTTP Request Methods
+    Question: What HTTP request method is typically used when submitting a form on a website?
+    Options: ['GET', 'POST', 'PUT', 'DELETE']
+    Correct Answer: POST
+  Content Block 4:
+    Type: Question
+    Title: Roles of HTML, CSS and JavaScript
+    Question: In a typical website, what roles do HTML, CSS and JavaScript play respectively in the client-server interaction?
+    Options: ['HTML structures the data, CSS styles it, JavaScript makes it interactive', 'HTML and CSS are handled by the server, JavaScript runs on the client', 'HTML is sent by the server, CSS and JavaScript are added by the client', 'They are all part of the HTTP protocol governing client-server communication']
+    Correct Answer: HTML structures the data, CSS styles it, JavaScript makes it interactive
+  Content Block 5:
+    Type: Text
+    Title: What is a Web Browser?
+    Body: A web browser is a software application that allows you to access and view websites. It retrieves, p...
+  Content Block 6:
+    Type: Question
+    Title: Browser Functions
+    Question: Which of the following is NOT a key function of web browsers?
+    Options: ['Rendering HTML and CSS to display web pages', 'Executing server-side application logic', 'Providing a user interface to interact with web pages', 'Sending requests to web servers for web pages']
+    Correct Answer: Executing server-side application logic
+  Content Block 7:
+    Type: Text
+    Title: Browsers and HTTP
+    Body: Web browsers communicate with web servers using the Hypertext Transfer Protocol (HTTP). HTTP is an a...
+  Content Block 8:
+    Type: Question
+    Title: HTTP Request Components
+    Question: Which of these is NOT a key component of an HTTP request from a browser?
+    Options: ['HTTP method (e.g. GET, POST)', 'URL of the requested resource', 'HTTP response status code', 'HTTP request headers']
+    Correct Answer: HTTP response status code
+  Content Block 9:
+    Type: Question
+    Title: HTTP Methods
+    Question: Which HTTP method is used by the browser when you submit an HTML form?
+    Options: ['GET', 'POST', 'PUT', 'DELETE']
+    Correct Answer: POST
+  Content Block 10:
+    Type: Text
+    Title: What is a Code Editor?
+    Body: A code editor is a specialized text editor designed for writing and editing code. While you can writ...
+  Content Block 11:
+    Type: Text
+    Title: Using a Code Editor
+    Body: To use a code editor:
+
+1. Open the editor application
+2. Create a new file and save it with the prop...
+  Content Block 12:
+    Type: Question
+    Title: Code Editor Quiz
+    Question: What does a code editor help with?
+    Options: ['Formatting and indenting code', 'Highlighting syntax', 'Completing code automatically', 'All of the above']
+    Correct Answer: All of the above
+  Content Block 13:
+    Type: Question
+    Title: Saving Code Files
+    Question: When saving a code file, it's important to:
+    Options: ['Use the correct file extension', 'Save frequently', 'Choose a recognizable name', 'All of the above']
+    Correct Answer: All of the above
+  Content Block 14:
+    Type: Text
+    Title: Introduction to Developer Tools
+    Body: Developer tools are a set of features built into modern web browsers that allow you to inspect, debu...
+  Content Block 15:
+    Type: Text
+    Title: Opening Developer Tools
+    Body: To open developer tools:
+- Chrome: Menu > More Tools > Developer Tools, or Ctrl+Shift+I (Windows) / ...
+  Content Block 16:
+    Type: Question
+    Title: Accessing Developer Tools
+    Question: How can you open developer tools in Google Chrome?
+    Options: ['Menu > More Tools > Developer Tools', 'Menu > Settings > Developer Tools', 'Right-click > Inspect Element', 'Menu > Add-ons > Developer Tools']
+    Correct Answer: Menu > More Tools > Developer Tools
+  Content Block 17:
+    Type: Text
+    Title: Key Tabs in Developer Tools
+    Body: The developer tools contain several tabs with different features:
+
+- Elements: Inspect and modify th...
+  Content Block 18:
+    Type: Text
+    Title: Inspecting Page Elements
+    Body: One of the most common uses of developer tools is inspecting the HTML elements on the page. You can ...
+  Content Block 19:
+    Type: Question
+    Title: Debugging JavaScript
+    Question: Which tab in developer tools is used to debug JavaScript code?
+    Options: ['Elements', 'Console', 'Sources', 'Network']
+    Correct Answer: Sources
+  Content Block 20:
+    Type: Text
+    Title: Analyzing Network Requests
+    Body: The Network tab in developer tools lets you see all the network requests the page makes. This includ...
+  Content Block 21:
+    Type: Question
+    Title: Checking Element Styles
+    Question: How can you see the styles applied to a specific element on the page?
+    Options: ["Right-click the element and choose 'Inspect'", 'Switch to the Network tab and reload the page', "Click the 'Computed' tab in the Elements panel", 'Console.log the element']
+    Correct Answer: Right-click the element and choose 'Inspect'
+
+Module 2: HTML
+Content blocks generated: 7
+  Content Block 1:
+    Type: Text
+    Title: Introduction to HTML
+    Body: HTML (HyperText Markup Language) is the standard markup language for creating web pages. HTML uses t...
+  Content Block 2:
+    Type: Question
+    Title: HTML Paragraph Tag
+    Question: What tag is used to define a paragraph in HTML?
+    Options: ['<p>', '<para>', '<paragraph>', '<text>']
+    Correct Answer: <p>
+  Content Block 3:
+    Type: Question
+    Title: HTML Link Syntax
+    Question: What is the correct syntax for creating a link in HTML?
+    Options: ['<a>http://www.example.com</a>', '<a src="http://www.example.com">', '<link>http://www.example.com</link>', '<a href="http://www.example.com">Link text</a>']
+    Correct Answer: <a href="http://www.example.com">Link text</a>
+  Content Block 4:
+    Type: Question
+    Title: HTML Image Tag
+    Question: Which tag is used to embed an image in an HTML page?
+    Options: ['<jpg>', '<picture>', '<img>', '<image>']
+    Correct Answer: <img>
+  Content Block 5:
+    Type: Text
+    Title: Example HTML Page
+    Body: Here's a simple example of an HTML page using some common tags:
+
+<html>
+<head>
+  <title>My Web Page<...
+  Content Block 6:
+    Type: Text
+    Title: Using HTML Elements to Structure Content
+    Body: HTML provides a number of semantic elements that you can use to structure and give meaning to the co...
+  Content Block 7:
+    Type: Question
+    Title: Semantic HTML Quiz
+    Question: Which HTML element would be the most semantically appropriate to use for the main content of a blog post?
+    Options: ['<article>', '<section>', '<main>', '<div>']
+    Correct Answer: <article>
+
+Module 3: CSS
+Content blocks generated: 12
+  Content Block 1:
+    Type: Text
+    Title: CSS Rule Syntax
+    Body: A CSS rule consists of a selector and a declaration block. The selector points to the HTML element y...
+  Content Block 2:
+    Type: Text
+    Title: CSS Selectors
+    Body: CSS selectors define the elements to which a set of CSS rules apply. There are several types of sele...
+  Content Block 3:
+    Type: Question
+    Title: Element Selector
+    Question: What CSS selector would select all the <div> elements on a page?
+    Options: ['#div', '.div', 'div', '*']
+    Correct Answer: div
+  Content Block 4:
+    Type: Question
+    Title: Class Selector
+    Question: What CSS selector would select all elements with a class of "highlight"?
+    Options: ['#highlight', '.highlight', 'highlight', 'class=highlight']
+    Correct Answer: .highlight
+  Content Block 5:
+    Type: Text
+    Title: Introduction to CSS
+    Body: CSS (Cascading Style Sheets) is a language used to describe the look and formatting of a document wr...
+  Content Block 6:
+    Type: Text
+    Title: Common CSS Properties
+    Body: Some of the most frequently used CSS properties for styling web pages include:
+
+- color: sets the te...
+  Content Block 7:
+    Type: Question
+    Title: CSS Quiz
+    Question: What does the CSS stand for?
+    Options: ['Cascading Style Sheets', 'Creative Style Sheets', 'Computer Style Sheets', 'Colorful Style Sheets']
+    Correct Answer: Cascading Style Sheets
+  Content Block 8:
+    Type: Question
+    Title: Styling Paragraphs
+    Question: Which CSS property is used to change the text color of an element?
+    Options: ['font-color', 'text-color', 'color', 'font']
+    Correct Answer: color
+  Content Block 9:
+    Type: Text
+    Title: CSS Layout Techniques Overview
+    Body: CSS provides several key properties and techniques for laying out elements on a web page:
+
+- display...
+  Content Block 10:
+    Type: Question
+    Title: The display property
+    Question: What does the 'display' property control in CSS?
+    Options: ['The visibility of an element', 'The size of an element', 'The display behavior of an element', 'The position of an element']
+    Correct Answer: The display behavior of an element
+  Content Block 11:
+    Type: Text
+    Title: Flexbox Example
+    Body: Here's an example of using flexbox to create a simple layout with a header, footer, and main content...
+  Content Block 12:
+    Type: Question
+    Title: Flexbox grow
+    Question: In the flexbox example, what does 'flex: 1' do on the main element?
+    Options: ['Makes it grow to fill available space', 'Makes it shrink if needed', 'Sets its initial size to 1px', 'Allows it to wrap onto multiple lines']
+    Correct Answer: Makes it grow to fill available space
+
+Module 4: JavaScript
+Content blocks generated: 14
+  Content Block 1:
+    Type: Text
+    Title: Introduction to JavaScript Syntax and Data Types
+    Body: JavaScript has its own unique syntax rules that define how code should be structured and formatted. ...
+  Content Block 2:
+    Type: Text
+    Title: JavaScript Syntax Basics
+    Body: Some key syntax rules in JavaScript include:
+- Statements should end in a semicolon ;
+- Code blocks ...
+  Content Block 3:
+    Type: Question
+    Title: JavaScript Comments
+    Question: How do you write a single line comment in JavaScript?
+    Options: ['// This is a comment', '<!-- This is a comment -->', '/* This is a comment */', "'This is a comment'"]
+    Correct Answer: // This is a comment
+  Content Block 4:
+    Type: Text
+    Title: Variables in JavaScript
+    Body: Variables are used to store values in JavaScript. They are declared using the keywords var, let, or ...
+  Content Block 5:
+    Type: Question
+    Title: Declaring Variables
+    Question: Which keyword should you use to declare a variable that will not be reassigned?
+    Options: ['var', 'let', 'const']
+    Correct Answer: const
+  Content Block 6:
+    Type: Text
+    Title: JavaScript Data Types
+    Body: JavaScript has several built-in data types:
+- Number: For numeric values like 7 or 3.14
+- String: Fo...
+  Content Block 7:
+    Type: Question
+    Title: Data Type Quiz
+    Question: Which of the following is NOT a JavaScript data type?
+    Options: ['Number', 'String', 'Boolean', 'Character']
+    Correct Answer: Character
+  Content Block 8:
+    Type: Text
+    Title: Introduction to DOM Manipulation
+    Body: DOM manipulation refers to using JavaScript to dynamically modify the content, structure, and style ...
+  Content Block 9:
+    Type: Text
+    Title: Changing Element Text
+    Body: One common way to manipulate a web page with JavaScript is to change the text inside an element. Her...
+  Content Block 10:
+    Type: Question
+    Title: Changing Element Text
+    Question: What JavaScript property can be used to get or set the text inside an element?
+    Options: ['innerText', 'textContent', 'text', 'content']
+    Correct Answer: textContent
+  Content Block 11:
+    Type: Text
+    Title: Responding to User Events in JavaScript
+    Body: JavaScript allows you to make your web pages interactive by responding to user events. Some common e...
+  Content Block 12:
+    Type: Question
+    Title: Attaching Event Listeners
+    Question: What method is used to attach an event listener to an element?
+    Options: ['element.addListener()', 'element.addEvent()', 'element.addEventListener()', 'element.on()']
+    Correct Answer: element.addEventListener()
+  Content Block 13:
+    Type: Text
+    Title: Event Bubbling and Capturing
+    Body: When an event is triggered on an element, it actually goes through three phases:
+1. Capturing phase ...
+  Content Block 14:
+    Type: Question
+    Title: Event Phases
+    Question: In what order do the event phases occur?
+    Options: ['Bubbling, Target, Capturing', 'Target, Bubbling, Capturing', 'Capturing, Bubbling, Target', 'Capturing, Target, Bubbling']
+    Correct Answer: Capturing, Target, Bubbling
+
+Module 5: Capstone
+Content blocks generated: 3
+  Content Block 1:
+    Type: Text
+    Title: Introduction to Web Hosting
+    Body: In order to make a website accessible to others on the internet, you need to deploy it to a web host...
+  Content Block 2:
+    Type: Question
+    Title: Web Hosting Quiz
+    Question: What is the most affordable type of web hosting plan?
+    Options: ['Shared hosting', 'VPS hosting', 'Dedicated hosting', 'Cloud hosting']
+    Correct Answer: Shared hosting
+  Content Block 3:
+    Type: Text
+    Title: Deploying to a Web Host
+    Body: The specific steps to deploy your website will vary a bit depending on your hosting provider, but th...
+venv(base) adamyasingh@Adamyas-MacBook-Pro rebooted-ai %
