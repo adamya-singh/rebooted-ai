@@ -5,6 +5,7 @@ from datetime import datetime
 import os
 from dotenv import load_dotenv
 import concurrent.futures
+import streamlit as st
 
 #load env vars from .env
 load_dotenv()
@@ -197,70 +198,196 @@ class CourseContentGenerator(dspy.Module):
 
 
 
-#TEST CODE
-# Test the knowledge gap analyzer
-if __name__ == "__main__":
-    # Do STEP 1
-    # Create analyzer instance
-    analyzer = KnowledgeGapAnalyzer()
+#STREAMLIT FRONTEND
+def display_course_input():
+    """Display the hardcoded course input parameters"""
+    st.header("📚 AI Course Generator")
+    st.markdown("Add description here")
     
-    # Run the analysis
-    result = analyzer(
-        starting_point_description=sample_course_prompt.starting_point_description,
-        finish_line_description=sample_course_prompt.finish_line_description
+    with st.expander("📝 Course Input Parameters (Hardcoded)", expanded=True):
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("**Course Title:**")
+            st.info(sample_course_prompt.course_title)
+            
+            st.markdown("**Course Topics:**")
+            st.info(sample_course_prompt.course_topics)
+            
+            st.markdown("**Course Description:**")
+            st.info(sample_course_prompt.course_description)
+        
+        with col2:
+            st.markdown("**Starting Point:**")
+            st.info(sample_course_prompt.starting_point_description)
+            
+            st.markdown("**Finish Line:**")
+            st.info(sample_course_prompt.finish_line_description)
+
+def display_knowledge_gaps(skills_list):
+    """Display the knowledge gap analysis results"""
+    st.subheader("🎯 Knowledge Gap Analysis Results")
+    st.markdown(f"**Total skills identified:** {len(skills_list)}")
+    
+    for i, skill in enumerate(skills_list, 1):
+        st.markdown(f"{i}. {skill}")
+
+def display_modules(modules):
+    """Display the module grouping results"""
+    st.subheader("📋 Course Module Structure")
+    
+    for i, module in enumerate(modules, 1):
+        with st.expander(f"Module {i}: {module.module_name}", expanded=True):
+            st.markdown("**Skills covered:**")
+            for skill in module.skills:
+                st.markdown(f"• {skill}")
+
+def display_content_block(content_block, block_num):
+    """Display a single content block"""
+    with st.container():
+        st.markdown(f"**Content Block {block_num}: {content_block.title}**")
+        
+        if content_block.type == "Text":
+            st.markdown(content_block.body)
+        
+        elif content_block.type == "Question":
+            st.markdown(f"**Question:** {content_block.question_text}")
+            
+            # Create interactive quiz
+            quiz_key = f"quiz_{block_num}_{content_block.title}"
+            user_answer = st.radio(
+                "Choose your answer:",
+                content_block.options,
+                key=quiz_key,
+                index=None
+            )
+            
+            if user_answer:
+                if user_answer == content_block.correct_answer:
+                    st.success("✅ Correct!")
+                else:
+                    st.error(f"❌ Incorrect. The correct answer is: {content_block.correct_answer}")
+        
+        st.divider()
+
+def display_final_course(course_content_result):
+    """Display the complete generated course"""
+    st.header("🎓 Generated Course Content")
+    
+    # Course overview
+    total_modules = len(course_content_result.modules)
+    total_content_blocks = sum(len(module.content_blocks) for module in course_content_result.modules)
+    
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("Total Modules", total_modules)
+    with col2:
+        st.metric("Total Content Blocks", total_content_blocks)
+    with col3:
+        text_blocks = sum(1 for module in course_content_result.modules for block in module.content_blocks if block.type == "Text")
+        question_blocks = total_content_blocks - text_blocks
+        st.metric("Quiz Questions", question_blocks)
+    
+    # Display each module
+    for i, module_bundle in enumerate(course_content_result.modules, 1):
+        with st.expander(f"📖 Module {i}: {module_bundle.module_name}", expanded=False):
+            st.markdown(f"**Content blocks in this module:** {len(module_bundle.content_blocks)}")
+            
+            for j, content_block in enumerate(module_bundle.content_blocks, 1):
+                display_content_block(content_block, j)
+
+def run_course_generation():
+    """Run the complete course generation process with live updates"""
+    
+    # Initialize progress
+    progress_bar = st.progress(0)
+    status_text = st.empty()
+    
+    # Step 1: Knowledge Gap Analysis
+    status_text.text("🔍 Step 1: Analyzing knowledge gaps...")
+    progress_bar.progress(10)
+    
+    with st.status("Running Knowledge Gap Analysis...", expanded=True) as status:
+        analyzer = KnowledgeGapAnalyzer()
+        result = analyzer(
+            starting_point_description=sample_course_prompt.starting_point_description,
+            finish_line_description=sample_course_prompt.finish_line_description
+        )
+        skills_list = result.analysis.knowledge_skills_list
+        status.update(label="✅ Knowledge Gap Analysis Complete!", state="complete")
+    
+    progress_bar.progress(33)
+    
+    # Display Step 1 results
+    display_knowledge_gaps(skills_list)
+    
+    # Step 2: Module Grouping
+    status_text.text("📋 Step 2: Grouping skills into modules...")
+    
+    with st.status("Running Module Grouping...", expanded=True) as status:
+        grouper = ModuleGrouper()
+        grouping_result = grouper(knowledge_skills_list=skills_list)
+        modules = grouping_result.grouping.modules
+        status.update(label="✅ Module Grouping Complete!", state="complete")
+    
+    progress_bar.progress(66)
+    
+    # Display Step 2 results
+    display_modules(modules)
+    
+    # Step 3: Content Generation
+    status_text.text("✍️ Step 3: Generating course content...")
+    
+    with st.status("Running Content Generation...", expanded=True) as status:
+        course_generator = CourseContentGenerator()
+        course_content_result = course_generator(modules=modules)
+        status.update(label="✅ Content Generation Complete!", state="complete")
+    
+    progress_bar.progress(100)
+    status_text.text("🎉 Course generation complete!")
+    
+    # Display final results
+    display_final_course(course_content_result)
+    
+    # Store results in session state
+    st.session_state.course_content = course_content_result
+    st.session_state.generation_complete = True
+
+def main():
+    """Main Streamlit app"""
+    st.set_page_config(
+        page_title="AI Course Generator",
+        page_icon="🎓",
+        layout="wide"
     )
     
-    # Print the results from STEP 1
-    print("=== KNOWLEDGE GAP ANALYSIS ===")
-    print(f"Starting Point: {sample_course_prompt.starting_point_description}")
-    print(f"Finish Line: {sample_course_prompt.finish_line_description}")
-    print(f"\nKnowledge/Skills Needed:")
+    # Display course input
+    display_course_input()
     
-    # Now you can access the structured list
-    skills_list = result.analysis.knowledge_skills_list
-    for i, skill in enumerate(skills_list, 1):
-        print(f"{i}. {skill}")
+    # Generation button
+    st.markdown("---")
     
-    # For step 2, you can now easily iterate over the list
-    print(f"\nTotal skills identified: {len(skills_list)}")
-    print("Skills for processing in Step 2:")
-    for skill in skills_list:
-        print(f"  - {skill}")
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("🚀 Generate Course", type="primary", use_container_width=True):
+            st.session_state.generation_started = True
+            # Clear previous results
+            if 'course_content' in st.session_state:
+                del st.session_state.course_content
+            if 'generation_complete' in st.session_state:
+                del st.session_state.generation_complete
     
-
-    # Do STEP 2
-    # Test the module grouper
-    grouper = ModuleGrouper()
-    grouping_result = grouper(knowledge_skills_list=skills_list)
-
-    # Print the results from STEP 2
-    # Print the grouped modules
-    print("\n=== MODULE GROUPING ===")
-    for i, module in enumerate(grouping_result.grouping.modules, 1):
-        print(f"Module {i}: {module.module_name}")
-        for skill in module.skills:
-            print(f"  - {skill}")
+    # Run generation if button was clicked
+    if st.session_state.get('generation_started', False):
+        if not st.session_state.get('generation_complete', False):
+            run_course_generation()
+        else:
+            # Display cached results
+            st.success("Course already generated! Here are the results:")
+            display_final_course(st.session_state.course_content)
     
+    # Footer
+    st.markdown("---")
 
-    # Do STEP 3
-    # Test the course content generator
-    course_generator = CourseContentGenerator()
-    course_content_result = course_generator(modules=grouping_result.grouping.modules)
-
-    # Print the results from STEP 3
-    print("\n=== COURSE CONTENT GENERATION ===")
-    for i, module_bundle in enumerate(course_content_result.modules, 1):
-        print(f"\nModule {i}: {module_bundle.module_name}")
-        print(f"Content blocks generated: {len(module_bundle.content_blocks)}")
-        
-        for j, content_block in enumerate(module_bundle.content_blocks, 1):
-            print(f"  Content Block {j}:")
-            print(f"    Type: {content_block.type}")
-            print(f"    Title: {content_block.title}")
-            
-            if content_block.type == "Text":
-                print(f"    Body: {content_block.body[:100]}..." if len(content_block.body) > 100 else f"    Body: {content_block.body}")
-            elif content_block.type == "Question":
-                print(f"    Question: {content_block.question_text}")
-                print(f"    Options: {content_block.options}")
-                print(f"    Correct Answer: {content_block.correct_answer}")
+if __name__ == "__main__":
+    main()
