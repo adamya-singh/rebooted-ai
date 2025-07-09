@@ -350,6 +350,8 @@ def run_course_generation():
     display_final_course(course_content_result)
     
     # Store results in session state
+    st.session_state.skills_list = skills_list
+    st.session_state.modules = modules
     st.session_state.course_content = course_content_result
     st.session_state.generation_complete = True
 
@@ -372,6 +374,10 @@ def main():
         if st.button("🚀 Generate Course", type="primary", use_container_width=True):
             st.session_state.generation_started = True
             # Clear previous results
+            if 'skills_list' in st.session_state:
+                del st.session_state.skills_list
+            if 'modules' in st.session_state:
+                del st.session_state.modules
             if 'course_content' in st.session_state:
                 del st.session_state.course_content
             if 'generation_complete' in st.session_state:
@@ -384,6 +390,8 @@ def main():
         else:
             # Display cached results
             st.success("Course already generated! Here are the results:")
+            display_knowledge_gaps(st.session_state.skills_list)
+            display_modules(st.session_state.modules)
             display_final_course(st.session_state.course_content)
     
     # Footer
